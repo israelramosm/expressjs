@@ -16,7 +16,6 @@
     "eject-app": "react-scripts eject"
   },
   "dependencies": {
-    "babel-watch": "^2.0.7",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.0",
@@ -24,7 +23,7 @@
     "express": "^4.16.4",
     "express-flash": "0.0.2",
     "express-session": "^1.15.6",
-    "express-validator": "^4.3.0",
+    "express-validator": "^5.3.0",
     "express-winston": "^3.0.1",
     "modern-scripts": "2.2.0",
     "mongoose": "^5.3.13",
@@ -40,6 +39,8 @@
     "@babel/preset-env": "^7.1.6",
     "dotenv": "^6.1.0",
     "jest": "^23.6.0",
+    "lodash": "^4.17.11",
+    "mongodb": "^3.1.10",
     "mongodb-memory-server": "^2.7.3",
     "nodemon": "^1.18.6",
     "supertest": "^3.3.0"
