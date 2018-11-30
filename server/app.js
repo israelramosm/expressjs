@@ -7,6 +7,7 @@ import { connect } from "mongoose";
 
 import { MONGODB_URI, SESSION_SECRET } from "./util/secrets"; // Need it to load process.env
 import { logger, errLogger } from "./util/logger";
+import routes from "./routes/routes";
 
 const MongoStore = mongo(session);
 const app = express();
@@ -23,7 +24,7 @@ connect(
   });
 
 // Express configuration
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.resolve(__dirname + "/public")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,14 +42,12 @@ app.use(
 );
 
 // Routes
-app.use(logger());
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/index.html"));
-});
+app.use(logger()); // Logs every request
+routes(app);
 app.use(function(req, res) {
   console.log("** HTTP Error - 404 for request: " + req.url);
   res.status(404).send("Sorry cant find that!");
 });
-app.use(errLogger());
+app.use(errLogger()); // Logs error after request
 
 export default app;
