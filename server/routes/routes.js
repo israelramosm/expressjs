@@ -1,7 +1,9 @@
 import express from "express";
 import path from "path";
 
+import * as passportConfig from "../config/passportConfig";
 import * as productController from "../controllers/productsController";
+import * as userController from "../controllers/usersController";
 
 const base = express.Router();
 const v1 = express.Router();
@@ -26,4 +28,12 @@ export default app => {
     .delete(productController.deleteProduct);
 
   /** route /api/v1 */
+  v1.route("/login")
+    .get(userController.getLogin)
+    .post(userController.postLogin);
+  v1.route("/logout").get(userController.getLogout);
+  v1.route("/signup")
+    .get(userController.getSingup)
+    .post(userController.postSignup);
+  v1.route("/account").get(passportConfig.isAuthenticated);
 };
