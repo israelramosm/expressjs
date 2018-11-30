@@ -2,16 +2,17 @@
   "name": "sheloapp",
   "version": "0.1.0",
   "private": true,
+  "author": "Israel Ramos",
   "dependencies": {
     "modern-scripts": "2.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start-app": "react-scripts start",
+    "build-app": "react-scripts build",
+    "test-app": "react-scripts test",
+    "eject-app": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
