@@ -21,4 +21,4 @@ curl -X POST http://localhost:4000/api/products
 }'
 
 ### GET Products api/v1
-http://localhost:4000/api/product/5bf60b96700aec0f34200207
+http://localhost:4000/api/product/5bfd98c88e9da44dc84f66da
