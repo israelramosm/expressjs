@@ -4,10 +4,14 @@
   "private": true,
   "author": "Israel Ramos",
   "scripts": {
+    "db-init": "mongod --auth --port 27017 --dbpath C:\\dbs\\shelodb",
     "start-app": "react-scripts start",
-    "build-app": "react-scripts build",
+    "build-app": "react-scripts build && cp build/* ../public/",
     "test-app": "react-scripts test",
-    "eject-app": "react-scripts eject"
+    "eject-app": "react-scripts eject",
+    "start-server": "node ./server/server.js",
+    "build-server": "cp server/* ./dist/",
+    "test-server": "jest --detectOpenHandles --forceExit --coverage --verbose"
   },
   "dependencies": {
     "modern-scripts": "2.2.0",
