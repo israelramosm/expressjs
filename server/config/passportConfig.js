@@ -47,12 +47,11 @@ passport.use(
  * Login Required middleware.
  */
 export const isAuthenticated = (req, res, next) => {
+  // TODO: implement with client
   if (req.isAuthenticated()) {
-    res.send("AUTHENTICATED");
-    return next();
+    return next("Access granted");
   }
-  // res.redirect("/login");
-  res.send("NOT AUTHENTICATED");
+  res.redirect("/api/v1/login");
 };
 
 /**

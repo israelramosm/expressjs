@@ -54,8 +54,7 @@ export let postLogin = (req, res, next) => {
  */
 export let getLogout = (req, res) => {
   req.logout();
-  // res.redirect("/");
-  res.send(`User hits logout!\n`);
+  res.redirect("/");
 };
 
 /**
