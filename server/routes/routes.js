@@ -32,8 +32,6 @@ export default app => {
     .get(userController.getLogin)
     .post(userController.postLogin);
   v1.route("/logout").get(userController.getLogout);
-  v1.route("/signup")
-    .get(userController.getSingup)
-    .post(userController.postSignup);
+  v1.route("/signup").post(userController.postSignup);
   v1.route("/account").get(passportConfig.isAuthenticated);
 };
