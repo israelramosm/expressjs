@@ -58,14 +58,6 @@ export let getLogout = (req, res) => {
 };
 
 /**
- * GET /signup
- * Signup page.
- */
-export let getSingup = (req, res) => {
-  res.send(`User singup page!\n`);
-};
-
-/**
  * POST /api/v1/signup
  * Create a new local account.
  */
@@ -80,11 +72,6 @@ export let postSignup = (req, res) => {
     res.json(user);
   });
 };
-
-/**
- * GET /account
- * Profile page.
- */
 
 /**
  * POST /account/profile
@@ -102,6 +89,28 @@ export let postSignup = (req, res) => {
  */
 
 /**
+ * POST /reset/:token
+ * Process the reset password request.
+ */
+
+/**
+ * POST /forgot
+ * Create a random token, then the send user an email with a reset link.
+ */
+
+ // TODO: check if the api bellow would been need it
+
+/**
+ * GET /signup
+ * Signup page.
+ */
+
+/**
+ * GET /account
+ * Profile page.
+ */
+
+/**
  * GET /account/unlink/:provider
  * Unlink OAuth provider.
  */
@@ -112,16 +121,6 @@ export let postSignup = (req, res) => {
  */
 
 /**
- * POST /reset/:token
- * Process the reset password request.
- */
-
-/**
  * GET /forgot
  * Forgot Password page.
- */
-
-/**
- * POST /forgot
- * Create a random token, then the send user an email with a reset link.
  */
