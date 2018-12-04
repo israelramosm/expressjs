@@ -7,7 +7,7 @@
     "db-init": "mongod --auth --port 27017 --dbpath C:\\dbs\\shelodb",
     "start": "nodemon ./dist/server.js",
     "build": "babel ./server --out-dir ./dist && npm run build-app",
-    "watch": "cpx env.globals dist && babel server --copy-files --watch --out-dir dist",
+    "watch": "cpx .env.globals dist && babel server --copy-files --watch --out-dir dist",
     "test": "jest --detectOpenHandles --forceExit --coverage --verbose",
     "start-app": "react-scripts start",
     "build-app": "react-scripts build && cpx build/**/* dist/public/",
