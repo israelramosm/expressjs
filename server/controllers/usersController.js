@@ -18,16 +18,16 @@ export let getLogin = (req, res) => {
  * Sign in using email and password.
  */
 export let postLogin = (req, res, next) => {
+  // TODO: should validate here and on the client?
   req.assert("email", "Email is not valid").isEmail();
   req.assert("password", "Password cannot be blank").notEmpty();
   req.sanitize("email").normalizeEmail({ gmail_remove_dots: false });
 
-  const errors = req.validationErrors();
+  const err = req.validationErrors();
 
-  console.log(`${loginDebug} post Login endpoint`);
-  if (errors) {
-    req.flash("errors", errors);
-    req.send("should redirect to /login");
+  if (err) {
+    req.flash("errors", err);
+    return res.send({ msg: err });
   }
 
   passport.authenticate("local", (err, user, info) => {
@@ -35,19 +35,16 @@ export let postLogin = (req, res, next) => {
 
     if (!user) {
       req.flash("errors", info.message);
-      // return res.redirect("/login");
-      req.send("NOT Authenticated redirecting to login");
+      return res.send({ msg: info.message });
     }
-    req.logIn(user, err => {
-      if (err) {
-        return next(err);
-      }
-      req.flash("success", { msg: "Success! You are logged in." });
-      // res.redirect(req.session.returnTo || "/");
-      res.send("Authenticated redirect to current page or root");
-    });
 
-    console.log(`${loginDebug} post Login  authenticate passport endpoint`);
+    req.logIn(user, err => {
+      if (err) return next(err);
+
+      req.flash("success", { msg: "Success! You are logged in." });
+      // TODO: test on client
+      return res.redirect(req.session.returnTo || "/");
+    });
   })(req, res, next);
 };
 

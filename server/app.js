@@ -50,21 +50,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-app.use((req, res, next) => {
-  // After successful login, redirect back to the intended page
-  if (
-    !req.user &&
-    req.path !== "/login" &&
-    req.path !== "/signup" &&
-    !req.path.match(/^\/auth/) &&
-    !req.path.match(/\./)
-  ) {
-    req.session.returnTo = req.path;
-  } else if (req.user && req.path == "/account") {
-    req.session.returnTo = req.path;
-  }
-  next();
-});
+// TODO: check redirects here and users controller
+// app.use((req, res, next) => {
+//   // After successful login, redirect back to the intended page
+//   if (
+//     !req.user &&
+//     req.path !== "/login" &&
+//     req.path !== "/signup" &&
+//     !req.path.match(/^\/auth/) &&
+//     !req.path.match(/\./)
+//   ) {
+//     req.session.returnTo = req.path;
+//   } else if (req.user && req.path == "/account") {
+//     req.session.returnTo = req.path;
+//   }
+//   next();
+// });
 
 // Routes
 app.use(logger()); // Logs every request
