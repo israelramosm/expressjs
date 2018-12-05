@@ -7,9 +7,12 @@
     "db-init": "mongod --auth --port 27017 --dbpath C:\\dbs\\shelodb",
     "clean": "rimraf dist",
     "start": "nodemon ./dist/server.js",
-    "build": "npm run clean && npm run build:dev-server && npm run build:dev-client",
-    "build:dev-server": "webpack --mode development --progress --colors --config ./config/webpack.server-dev.js",
-    "build:dev-client": "webpack --mode development --progress --colors"
+    "build:dev": "npm run clean && npm run build:dev-server && npm run build:dev-client",
+    "build:dev-server": "webpack --mode development --progress --colors --config ./config/webpack.server.js",
+    "build:dev-client": "webpack --mode development --progress --colors --config ./webpack.dev.config.js",
+    "build:prod": "npm run clean && npm run build:prod-server && npm run build:prod-client",
+    "build:prod-server": "webpack --mode production --progress --colors --config ./webpack.server.config.js",
+    "build:prod-client": "webpack --mode production --progress --colors --config ./webpack.prod.config.js"
   },
   "dependencies": {
     "bcrypt": "^3.0.2",
