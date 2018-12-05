@@ -8,12 +8,12 @@ import { connect } from "mongoose";
 import passport from "passport";
 import flash from "express-flash";
 
-import { MONGODB_URI, SESSION_SECRET } from "./util/secrets"; // Need it to load process.env
 import { logger, errLogger } from "./util/logger";
 import routes from "./routes/routes";
 
 const MongoStore = mongo(session);
 const app = express();
+const { SESSION_SECRET, MONGODB_URI } = process.env;
 
 connect(
   MONGODB_URI,
