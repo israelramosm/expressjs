@@ -11,6 +11,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, outputDirectory),
+    // base on outputDirectory
     publicPath: "/",
     filename: "[name].js"
   },
@@ -20,11 +21,14 @@ module.exports = {
   module: {
     rules: [
       {
+        // Transpiles ES6-8 into ES5
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader"
       },
       {
+        // TODO: test scss to see if it's working
+
         test: /\.scss$/,
         use: [
           {
@@ -45,6 +49,8 @@ module.exports = {
         ]
       },
       {
+        // Loads CSS into a file when you import it via Javascript
+        // Rules are set in MiniCssExtractPlugin
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
       },
@@ -57,12 +63,12 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: "./public/index.html",
-      favicon: "./public/favicon.ico",
       excludeChunks: ["server"]
     }),
     new CopyWebpackPlugin([
       { from: "./public/styles/**/*", to: "../" },
-      { from: "./public/manifest.json", to: "./" }
+      { from: "./public/manifest.json", to: "./" },
+      { from: "./public/favicon.ico", to: "./" }
     ]),
     new webpack.NoEmitOnErrorsPlugin()
   ]

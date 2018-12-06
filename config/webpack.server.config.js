@@ -4,16 +4,13 @@ const nodeExternals = require("webpack-node-externals");
 const globals = require("./env-globals.config");
 
 module.exports = (env, argv) => {
-  const SERVER_PATH =
-    argv.mode === "production"
-      ? "./src/server/server.js"
-      : "./src/server/app-dev.js";
+  const SERVER_PATH = "./src/server/server.js";
 
   return {
     entry: SERVER_PATH,
     output: {
       path: path.join(__dirname, "../dist"),
-      publicPath: "/",
+      publicPath: "/public",
       filename: "server.js"
     },
     mode: argv.mode,

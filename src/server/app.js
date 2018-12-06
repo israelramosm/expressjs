@@ -14,7 +14,6 @@ import routes from "./routes/routes";
 import appDev from "./app-dev";
 
 const { SESSION_SECRET, MONGODB_URI, NODE_ENV } = process.env;
-console.log(NODE_ENV);
 
 const MongoStore = mongo(session);
 const app = NODE_ENV === "production" ? express() : appDev();

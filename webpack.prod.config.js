@@ -13,6 +13,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, outputDirectory),
+    // base on outputDirectory
     publicPath: "/",
     filename: "[name].js"
   },
@@ -42,22 +43,7 @@ module.exports = {
         }
       },
       {
-        // Loads the javacript into html template provided.
-        // Entry point is set below in HtmlWebPackPlugin in Plugins
-        test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader",
-            options: { minimize: true }
-          }
-        ]
-      },
-      {
-        // Loads images into CSS and Javascript files
-        test: /\.jpg$/,
-        use: [{ loader: "url-loader" }]
-      },
-      {
+        // TODO: test scss to see if it's working
         test: /\.scss$/,
         use: [
           {
@@ -82,13 +68,17 @@ module.exports = {
         // Rules are set in MiniCssExtractPlugin
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"]
+      },
+      {
+        // Loads images into CSS and Javascript files
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: "url-loader?limit=100000"
       }
     ]
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./public/index.html",
-      favicon: "./public/favicon.ico",
       excludeChunks: ["server"]
     }),
     new MiniCssExtractPlugin({
@@ -97,7 +87,8 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: "./public/styles/**/*", to: "../" },
-      { from: "./public/manifest.json", to: "./" }
+      { from: "./public/manifest.json", to: "./" },
+      { from: "./public/favicon.ico", to: "./" }
     ])
   ]
 };
