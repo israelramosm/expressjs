@@ -3,16 +3,20 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+
+const outputDirectory = "dist/public";
 
 module.exports = {
   entry: {
-    main: "./src/index.js"
+    main: "./src/client/index.js"
   },
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, outputDirectory),
     publicPath: "/",
     filename: "[name].js"
   },
+  mode: "production",
   target: "web",
   devtool: "#source-map",
   // Webpack 4 does not have a CSS minifier, although
@@ -54,6 +58,26 @@ module.exports = {
         use: [{ loader: "url-loader" }]
       },
       {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
         // Loads CSS into a file when you import it via Javascript
         // Rules are set in MiniCssExtractPlugin
         test: /\.css$/,
@@ -63,8 +87,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/html/index.html",
-      filename: "./index.html"
+      template: "./public/index.html",
+      favicon: "./public/favicon.ico",
+      excludeChunks: ["server"]
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",

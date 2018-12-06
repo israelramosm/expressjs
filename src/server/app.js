@@ -10,11 +10,16 @@ import flash from "express-flash";
 
 import { logger, errLogger } from "./util/logger";
 import routes from "./routes/routes";
+// Needs to init in other file
+import appDev from "./app-dev";
+
+const { SESSION_SECRET, MONGODB_URI, NODE_ENV } = process.env;
+console.log(NODE_ENV);
 
 const MongoStore = mongo(session);
-const app = express();
-const { SESSION_SECRET, MONGODB_URI } = process.env;
+const app = NODE_ENV === "production" ? express() : appDev();
 
+// Db connection
 connect(
   MONGODB_URI,
   { useNewUrlParser: true }

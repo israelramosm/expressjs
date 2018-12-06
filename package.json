@@ -8,11 +8,11 @@
     "clean": "rimraf dist",
     "start": "nodemon ./dist/server.js",
     "build:dev": "npm run clean && npm run build:dev-server && npm run build:dev-client",
-    "build:dev-server": "webpack --mode dev --progress --colors --config ./config/webpack.server.config.js",
-    "build:dev-client": "webpack --mode dev --progress --colors --config ./webpack.dev.config.js",
+    "build:dev-server": "webpack --mode development --progress --colors --config ./config/webpack.server.config.js",
+    "build:dev-client": "webpack --progress --colors --config ./webpack.dev.config.js",
     "build:prod": "npm run clean && npm run build:prod-server && npm run build:prod-client",
-    "build:prod-server": "webpack --mode prod --progress --colors --config ./webpack.server.config.js",
-    "build:prod-client": "webpack --mode prod --progress --colors --config ./webpack.prod.config.js"
+    "build:prod-server": "webpack --mode production --progress --colors --config ./config/webpack.server.config.js",
+    "build:prod-client": "webpack --progress --colors --config ./webpack.prod.config.js"
   },
   "dependencies": {
     "bcrypt": "^3.0.2",
@@ -41,6 +41,7 @@
     "babel-loader": "^8.0.4",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^1.0.1",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.6.0",
     "lodash": "^4.17.11",
