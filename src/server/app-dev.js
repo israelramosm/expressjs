@@ -18,17 +18,6 @@ export default () => {
       publicPath: config.output.publicPath
     })
   );
-  // TODO: check this
-  // app.get("*", (req, res, next) => {
-  //   compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
-  //     if (err) {
-  //       return next(err);
-  //     }
-  //     res.set("content-type", "text/html");
-  //     res.send(result);
-  //     res.end();
-  //   });
-  // });
 
   return app;
 };
