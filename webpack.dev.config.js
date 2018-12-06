@@ -7,7 +7,10 @@ const outputDirectory = "dist/public";
 
 module.exports = {
   entry: {
-    main: "./src/client/index.js"
+    main: [
+      "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000",
+      "./src/client/index.js"
+    ]
   },
   output: {
     path: path.join(__dirname, outputDirectory),
@@ -70,6 +73,7 @@ module.exports = {
       { from: "./public/manifest.json", to: "./" },
       { from: "./public/favicon.ico", to: "./" }
     ]),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ]
 };

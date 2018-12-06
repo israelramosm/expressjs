@@ -6,7 +6,7 @@
   "scripts": {
     "db-init": "mongod --auth --port 27017 --dbpath C:\\dbs\\shelodb",
     "clean": "rimraf dist",
-    "start": "nodemon ./dist/server.js",
+    "start": "node ./dist/server.js",
     "build:dev": "npm run clean && npm run build:dev-server && npm run build:dev-client",
     "build:dev-server": "webpack --mode development --progress --colors --config ./config/webpack.server.config.js",
     "build:dev-client": "webpack --progress --colors --config ./webpack.dev.config.js",
@@ -58,6 +58,7 @@
     "webpack": "^4.27.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.4.0",
+    "webpack-hot-middleware": "^2.24.3",
     "webpack-node-externals": "^1.7.2"
   },
   "eslintConfig": {
