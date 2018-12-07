@@ -7,7 +7,6 @@ import App from "./components/app";
 import reducers from "./reducers";
 
 // Needed for Hot Module Replacement
-console.log(typeof module.hot);
 if (typeof module.hot !== "undefined") {
   module.hot.accept(); // eslint-disable-line no-undef
 }
