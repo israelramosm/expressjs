@@ -20,7 +20,7 @@ const v2_API = "/api/v2";
 
 //DB URI connection
 const MONGODB_URI_LOCAL =
-  "mongodb://sheloapp:pwdshelodb@localhost:27017/shelodb";
+  "mongodb://localhost:27017/fullstackjs";
 const MONGODB_URI_TEST = "";
 
 const MONGODB_URI = !MONGODB_URI_TEST ? MONGODB_URI_LOCAL : MONGODB_URI_TEST;

@@ -1,10 +1,10 @@
 {
-  "name": "sheloapp",
+  "name": "fullstackjs",
   "version": "0.1.0",
   "private": true,
   "author": "Israel Ramos",
   "scripts": {
-    "db-init": "mongod --auth --port 27017 --dbpath C:\\dbs\\shelodb",
+    "db-init": "mongod --dbpath C:\\mongodbs\\fullstackjs",
     "clean": "rimraf dist",
     "start": "node ./dist/server.js",
     "build:dev": "npm run clean && npm run build:dev-server && npm run build:dev-client",
